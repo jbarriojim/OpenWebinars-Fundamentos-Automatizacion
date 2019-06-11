@@ -17,23 +17,18 @@ public class Ejemplo3 {
 		// Creamos la instancia del driver
 		FirefoxDriver driver = new FirefoxDriver();
 		// Accedemos a la URL que deseemos
-		driver.get("https://www.paypal.com/es/webapps/mpp/account-selection");
+		driver.get("https://register.betfair.es/account/registration");
 		// Aceptamos las cookies
-		new WebDriverWait(driver, EXPLICIT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(By.xpath(".//a[@id='acceptAllButton']"))).click();
-		//driver.findElement(By.xpath(".//a[@id='acceptAllButton']")).click();
+		// new WebDriverWait(driver, EXPLICIT_TIMEOUT).until(ExpectedConditions.elementToBeClickable(By.xpath(".//a[@id='acceptAllButton']"))).click();
+
 		// Obtenemos el elemento deseado y le hacemos click
-		myFindelement(".//input[@id='radio-personal']", EXPLICIT_TIMEOUT, driver).click();
-		//driver.findElement(By.xpath(".//input[@id='radio-personal']")).click();
-		// Clickamos en siguiente
-		myFindelement(".//a[@id='cta-btn']", EXPLICIT_TIMEOUT, driver).click();
-		//driver.findElement(By.xpath(".//a[@id='cta-btn']")).click();
+		myFindelement(".//label[@for='gender-female']", EXPLICIT_TIMEOUT, driver).click();
+
 		// Vamos a interactuar con un select
-		//Select select = new Select(driver.findElement(By.xpath(".//select[@id='paypalAccountData_countryselector']")));
-		Select select = new Select(myFindelement(".//select[@id='paypalAccountData_countryselector']", EXPLICIT_TIMEOUT, driver));
-		select.selectByValue("AN");
+		Select select = new Select(myFindelement(".//select[@id='phone-countryOfPrefix']", EXPLICIT_TIMEOUT, driver));
+		select.selectByValue("AD");
 		// Rellenar campo con texto
-		//driver.findElement(By.xpath(".//input[@id='paypalAccountData_firstName']")).sendKeys("MI NOMBRE");
-		myFindelement(".//input[@id='paypalAccountData_firstName']", EXPLICIT_TIMEOUT, driver).sendKeys("WAIT NAME");
+		myFindelement(".//input[@id='firstName']", EXPLICIT_TIMEOUT, driver).sendKeys("WAIT NAME");
 		Thread.sleep(10000);
 		// Cerrar el navegador
 		driver.quit();
